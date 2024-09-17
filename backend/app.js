@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser"
 import dbConnect from "./DataBase/dbConnection.js"
 import { changeMessageStatus, deleteMessages, getMessages, sendMessages } from "./controllers/MessageController.js"
 import { verification } from "./middlware/Tokens.middleware.js"
+import cors from "cors"
 
 const app = express()
 app.use(express.json())
@@ -12,6 +13,7 @@ app.use(express.urlencoded({extended:true}))
 configDotenv()
 app.use(cookieParser())
 const PORT = process.env.PORT || 3000
+app.use(cors({origin:"*"}))
 
 dbConnect().then((res)=>{
     if(res){
