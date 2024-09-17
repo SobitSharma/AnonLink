@@ -38,7 +38,7 @@ const MessageBoard = () => {
     if (message || selectedMessage) {
       console.log('Message sent:', message || selectedMessage);
       let messageToSend = message || selectedMessage
-      fetch(`/v1/sendmessage/${userId}`, {
+      fetch(`${import.meta.env.VITE_API_URL}/v1/sendmessage/${userId}`, {
         method:'POST',
         headers:{
             'Content-Type':'application/json'

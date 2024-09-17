@@ -19,6 +19,7 @@ const Home = () => {
   const [toggleValue, setToggleValue] = useState(
     userInfo.isAcceptingMessages || undefined
   );
+  
 
   function HandleNotifications(message) {
     setNotificationMessage(message);
@@ -34,7 +35,7 @@ const Home = () => {
   }
 
   function HandleDelete(id) {
-    fetch(`/v1/delete/${id}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/v1/delete/${id}`, {
       method: "GET",
       credentials: "include",
     })
@@ -50,7 +51,7 @@ const Home = () => {
   }
 
   function Refresh() {
-    fetch("/v1/getmessages", {
+    fetch(`${import.meta.env.VITE_API_URL}/v1/getmessages`, {
       method: "GET",
       credentials: "include",
     })
@@ -71,7 +72,7 @@ const Home = () => {
     if (!loading) {
       return;
     }
-    fetch(`/v1/update/${toggleValue}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/v1/update/${toggleValue}`, {
       method: "PUT",
       credentials: "include",
     })
@@ -86,7 +87,7 @@ const Home = () => {
   }
 
   function HandleLogout(){
-    fetch('/v1/logout', {
+    fetch(`${import.meta.env.VITE_API_URL}/v1/logout`, {
       method:'GET',
       credentials:'include'
     }).then((response)=>response.json())
@@ -103,7 +104,7 @@ const Home = () => {
   useEffect(() => {
     if (isAuthenticated) {
       const userDetails = { name: user.name, email: user.email };
-      fetch("/v1/signin", {
+      fetch(`${import.meta.env.VITE_API_URL}/v1/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -114,7 +115,7 @@ const Home = () => {
         .then((response) => response.json())
         .then((response) => {
           if (response.status == 200) {
-            let uniqueId = `http://localhost:5173/sendmessages/${response.user?.uniqueId}`;
+            let uniqueId = `https://main--anonmessages.netlify.app/sendmessages/${response.user?.uniqueId}`;
             const responseFromApi = {
               username: response.user?.username,
               email: response.user?.email,
