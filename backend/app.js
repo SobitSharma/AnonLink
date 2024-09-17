@@ -13,7 +13,7 @@ app.use(express.urlencoded({extended:true}))
 configDotenv()
 app.use(cookieParser())
 const PORT = process.env.PORT || 3000
-app.use(cors({origin:"*"}))
+app.use(cors({origin:"https://main--anonmessages.netlify.app"}))
 
 dbConnect().then((res)=>{
     if(res){
