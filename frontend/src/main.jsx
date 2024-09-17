@@ -23,7 +23,7 @@ createRoot(document.getElementById('root')).render(
     domain={import.meta.env.VITE_G_DOMAIN}
     clientId={import.meta.env.VITE_G_CLIENTID}
     authorizationParams={{
-      redirect_uri: "http://localhost:5173/home"
+      redirect_uri: "https://main--anonmessages.netlify.app/home"
     }}
   >
     <RouterProvider router={router}/>
