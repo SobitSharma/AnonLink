@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server:{
     proxy:{
-      '/v1':'https://anonlink.onrender.com'
+      '/v1':''
     }
   }
 })
