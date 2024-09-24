@@ -17,7 +17,7 @@ const router = createBrowserRouter(
     </Route>
   )
 )
-
+//ok
 createRoot(document.getElementById('root')).render(
   <Auth0Provider
     domain={import.meta.env.VITE_G_DOMAIN}
